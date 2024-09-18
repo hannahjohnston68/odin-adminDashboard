@@ -1,1 +1,385 @@
+*{
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "sidebar header"
+    "sidebar main";
+  height: 100vh;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto; 
+  grid-template-areas:
+    "sidebar-top"
+    "sidebar-bottom";
+  gap: 20px;
+  background-color:#083344 ;
+  color:#ecfdf5;
+}
+
+.sidebar-top > div, .sidebar-bottom > div{
+  display: flex;           
+  align-items: center;       
+  gap: 10px; 
+}
+
+.sidebar svg {
+  width: 20px;  
+  height: 20px;  
+  fill: currentColor; 
+}
+
+.sidebar div:hover {
+  font-style: under;
+}
+
+.sidebar-top{
+  grid-area: sidebar-top;
+}
+
+.sidebar-bottom{
+  grid-area: sidebar-bottom;
+  margin-top: 30px; 
+}
+
+.sidebar-top div:not(.title):hover,
+.sidebar-bottom div:hover {
+  text-decoration: underline;
+  transform: scale(1.02); 
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.sidebar-top .title:hover{
+  cursor: pointer; 
+}
+
+.main:hover {
+  cursor:default; 
+}
+
+.title{
+  margin-bottom: 20px; 
+}
+
+.title svg{
+  width: 40px;  
+  height: 40px;  
+  fill: currentColor; 
+}
+
+.title h1 {
+  font-size: 1.5em;
+}
+
+.header {
+  grid-area: header;
+  background-color: white;
+  color: #083344;
+  padding: 20px;
+  text-align: center;
+  height: auto;
+  display: flex;
+  flex-direction: column; 
+  padding-bottom: 10px; 
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  position: relative; 
+}
+
+.header-top {
+  display: flex;
+  width: 100%; 
+  justify-content: space-between; 
+  align-items: center;
+}
+
+.header-bottom {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px; 
+}
+
+.header > .header-top > div:hover,
+.header > .header-bottom > div:hover {
+  cursor: pointer; 
+}
+
+.search-bar, .notifications, .user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-top input[type=text] {
+  float: right;
+  padding: 6px;
+  border: none;
+  margin-top: 8px;
+  margin-right: 16px;
+  font-size: 17px;
+  background-color: #f1f5f9;
+  border-radius: 10px;
+  width: 400px;
+  height: 20px;
+  border: 1px solid #e2e8f0; 
+}
+
+.header svg{
+  overflow: visible;
+}
+.search-bar svg { 
+  margin-left: -20px;
+}
+
+.notifications{
+  margin-left: auto; 
+  padding-right: 15px; 
+}
+
+.notifications:hover {
+  animation: rattle 0.5s infinite;
+}
+
+.search-bar svg{
+  margin-right: auto;
+}
+
+@keyframes rattle {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(10deg);
+  }
+  50% {
+    transform: rotate(-10deg);
+  }
+  75% {
+    transform: rotate(10deg);
+  }
+}
+
+.user{
+  font-size: 20px; 
+  background-color: transparent; 
+}
+
+.user:hover{
+  cursor: pointer; 
+}
+
+ .welcome, .buttons{
+  display: flex;
+  gap: 10px;
+}
+
+.welcome{
+  font-size: 1.5em;
+  margin-top: auto; 
+  position: relative; 
+  cursor: pointer
+}
+
+.buttons{
+  margin-left: auto;  
+}
+
+button {
+  border-radius: 10px; 
+  height: 30px; 
+  width: 80px; 
+  background-color: #155e75;
+  color: white;
+  border: 0px; 
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+button:hover {
+  transform: scale(1.02); 
+  transition: all 0.3s ease; 
+  cursor: pointer; 
+  background-color: #0e7490;
+}
+
+.header svg {
+  width: 25px;
+  height: 25px;
+  fill: currentColor;
+  transform-origin: center;
+  position: relative;
+}
+
+.header svg:hover{
+  transform: scale(1.05); 
+  transition: all 0.3s ease;
+  border-radius: 30px;
+  padding: 10px;  
+  background-color: #e5e7eb;
+}
+
+.main {
+  grid-area: main;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    "projects announcements"
+    "projects trending"
+    "projects trending"
+    "projects trending"
+    "projects trending";
+    grid-gap: 20px;
+    background-color: #f1f5f9;
+
+}
+
+.projects-section {
+  grid-area: projects;
+}
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 20px;
+}
+
+.project-item {
+  position: relative; 
+  border-radius: 10px;
+  height: 150px;
+  width: 300px;
+  overflow: auto;
+  justify-items: center;
+  align-items: center;
+  text-align: left;
+  padding-left: 20px; 
+  padding-bottom: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  background-color: white;
+  border-left: 10px solid #f87171;
+}
+
+.project-item:hover {
+  background-color: #fee2e2; 
+  border-left-color: #f87171; 
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3); 
+  transform: scale(1.02); 
+  transition: all 0.3s ease; 
+  cursor: pointer; 
+}
+
+.project-item svg {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  fill: currentColor;
+}
+
+.project-name{
+  font-weight: bold;
+}
+
+.projects-section h2,
+.announcements-section h3,
+.trending-section h4 {
+  font-size: 20px;
+}
+
+.announcements-section {
+  grid-area: announcements;
+}
+
+.announcements {
+  display: grid;
+  grid-template-columns: 1fr;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  background-color: white;
+}
+
+.announcements:hover {
+  background-color:#fee2e2; 
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3); 
+  transform: scale(1.02); 
+  transition: all 0.3s ease; 
+  cursor: pointer; 
+}
+
+.announcement-item {
+  height: 50px;
+  width: 200px;
+  justify-items: center;
+  align-items: center;
+  text-align: left;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.trending-section {
+  grid-area: trending;
+}
+
+.trending {
+  display: grid;
+  grid-template-columns: 1fr;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  background-color:white; 
+}
+
+.trending:hover{
+  background-color:#fee2e2; 
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3); 
+  transform: scale(1.02); 
+  transition: all 0.3s ease; 
+  cursor: pointer; 
+
+}
+
+.profile-item {
+  display: flex;
+  align-items: center; 
+  height: 50px;
+  width: 200px;
+  justify-items: center;
+  align-items: center;
+  text-align: left;
+  padding-left: 10px;
+  gap: 10px; 
+}
+
+.profile-item svg{
+  width: 25px;  
+  height: 25px;  
+  fill: currentColor; 
+}
+
+.short-border {
+  width: 95%;
+  height: 1px;
+  background-color: grey;
+  margin-top: 5px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+
 
